@@ -42,7 +42,7 @@ import java.util.Date;
  * 
  */
 @WebServlet("/HelloWorldServlet")
-public class HelloWorldMDBServletClient extends HttpServlet {
+public class HelloWrold extends HttpServlet {
 
     private static final long serialVersionUID = -8314035702649252239L;
 
