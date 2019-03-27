@@ -1,31 +1,3 @@
-
-Skip to content
-
-    Pull requests
-    Issues
-    Marketplace
-    Explore
-
-    @saswatsarangi0914
-
-11
-63
-
-    530
-
-jboss-openshift/openshift-quickstarts
-Code
-Issues 5
-Pull requests 18
-Projects 0
-Wiki
-Insights
-openshift-quickstarts/undertow-servlet/pom.xml
-@douglaspalmer douglaspalmer Undertow examples 3c24a45 on 31 Mar 2017
-@RadekKoubsky
-@knrc
-@douglaspalmer
-133 lines (121 sloc) 5.19 KB
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ JBoss, Home of Professional Open Source.
@@ -54,8 +26,8 @@ openshift-quickstarts/undertow-servlet/pom.xml
     <artifactId>servlet</artifactId>
     <version>1.0.0.Final</version>
 
-    <name>Undertow Servlet Example</name>
-    <description>Undertow Servlet Example for OpenShift Java S2I</description>
+    <name>HellowWorld Servlet Example</name>
+    <description>HelloWorld Servlet Example for OpenShift Java S2I</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -94,7 +66,7 @@ openshift-quickstarts/undertow-servlet/pom.xml
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
-                <finalName>undertow-servlet</finalName>
+                <finalName>hellowWorld-servlet</finalName>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -114,7 +86,7 @@ openshift-quickstarts/undertow-servlet/pom.xml
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>org.openshift.quickstarts.undertow.servlet.ServletServer</mainClass>
+                                    <mainClass>cop.HelloWrold</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>
@@ -158,18 +130,3 @@ openshift-quickstarts/undertow-servlet/pom.xml
         </profile>
     </profiles>
 </project>
-
-    © 2019 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help
-
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
