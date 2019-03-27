@@ -27,7 +27,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.Date
+import java.util.Date;
 /**
  * <p>
  * A simple servlet 3 as client that sends several messages to a queue or a topic.
