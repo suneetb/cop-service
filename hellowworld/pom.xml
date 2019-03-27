@@ -86,7 +86,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>cop.servlet.HelloWrold</mainClass>
+                                    <mainClass>cop.servlet.ServletServer</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>
