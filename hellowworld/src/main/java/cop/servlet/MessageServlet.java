@@ -30,7 +30,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class MessageServlet extends HttpServlet {
 
-    public static final String MESSAGE = "message";
+    public static final String MESSAGE = "HelloWorld";
 
     private String message;
 
@@ -42,7 +42,10 @@ public class MessageServlet extends HttpServlet {
 
     @Override
     protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
         PrintWriter writer = resp.getWriter();
+        writer.write("<p>Time Now is <em>" + dateFormat.format(date) + "</em></p>");
         writer.write(message);
         writer.close();
     }
