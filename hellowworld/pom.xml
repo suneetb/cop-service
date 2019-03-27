@@ -97,7 +97,7 @@
         <profile>
             <id>flat-classpath-jar</id>
             <build>
-                <finalName>undertow-servlet</finalName>
+                <finalName>helloworld-servlet</finalName>
                 <plugins>
                     <plugin>
                         <artifactId>maven-dependency-plugin</artifactId>
