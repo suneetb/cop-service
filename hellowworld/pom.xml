@@ -1,3 +1,31 @@
+
+Skip to content
+
+    Pull requests
+    Issues
+    Marketplace
+    Explore
+
+    @saswatsarangi0914
+
+11
+63
+
+    530
+
+jboss-openshift/openshift-quickstarts
+Code
+Issues 5
+Pull requests 18
+Projects 0
+Wiki
+Insights
+openshift-quickstarts/undertow-servlet/pom.xml
+@douglaspalmer douglaspalmer Undertow examples 3c24a45 on 31 Mar 2017
+@RadekKoubsky
+@knrc
+@douglaspalmer
+133 lines (121 sloc) 5.19 KB
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ JBoss, Home of Professional Open Source.
@@ -22,33 +50,33 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cop</groupId>
+    <groupId>org.openshift.quickstarts.undertow</groupId>
     <artifactId>servlet</artifactId>
     <version>1.0.0.Final</version>
 
-    <name>Cop Servlet Example</name>
-    <description>Cop OpenShift Java S2I</description>
+    <name>Undertow Servlet Example</name>
+    <description>Undertow Servlet Example for OpenShift Java S2I</description>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <version.cop>1.3.25.Final-redhat-1</version.cop>
+        <version.undertow>1.3.25.Final-redhat-1</version.undertow>
         <version.jboss.logmanager>2.0.3.Final-redhat-1</version.jboss.logmanager>
     </properties>
 
     <dependencies>
 
         <dependency>
-            <groupId>io.cop</groupId>
-            <artifactId>cop-core</artifactId>
-            <version>${version.cop}</version>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-core</artifactId>
+            <version>${version.undertow}</version>
         </dependency>
 
         <dependency>
-            <groupId>io.cop</groupId>
-            <artifactId>cop-servlet</artifactId>
-            <version>${version.cop}</version>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-servlet</artifactId>
+            <version>${version.undertow}</version>
         </dependency>
 
         <dependency>
@@ -66,7 +94,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
-                <finalName>cop-servlet</finalName>
+                <finalName>undertow-servlet</finalName>
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -86,7 +114,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>cop.servlet.HellowWorld</mainClass>
+                                    <mainClass>org.openshift.quickstarts.undertow.servlet.ServletServer</mainClass>
                                 </manifest>
                             </archive>
                         </configuration>
@@ -97,7 +125,7 @@
         <profile>
             <id>flat-classpath-jar</id>
             <build>
-                <finalName>cop-servlet</finalName>
+                <finalName>undertow-servlet</finalName>
                 <plugins>
                     <plugin>
                         <artifactId>maven-dependency-plugin</artifactId>
@@ -130,3 +158,18 @@
         </profile>
     </profiles>
 </project>
+
+    © 2019 GitHub, Inc.
+    Terms
+    Privacy
+    Security
+    Status
+    Help
+
+    Contact GitHub
+    Pricing
+    API
+    Training
+    Blog
+    About
+
