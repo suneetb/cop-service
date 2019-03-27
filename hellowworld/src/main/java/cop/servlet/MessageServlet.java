@@ -29,12 +29,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Properties;
 
 public class MessageServlet extends HttpServlet {
 
     public static final String MESSAGE = "HelloWorld";
 
-    private String message;
+    private String message="HelloWorld";
 
     @Override
     public void init(final ServletConfig config) throws ServletException {
@@ -48,6 +49,7 @@ public class MessageServlet extends HttpServlet {
         Date date = new Date();
         PrintWriter writer = resp.getWriter();
         writer.write("<p>Time Now is <em>" + dateFormat.format(date) + "</em></p>");
+        writer.write("<p>NameSpace is <em>" + System.getProperty("MY_POD_NAMESPACE") + "</em></p>");
         writer.write(message);
         writer.close();
     }
