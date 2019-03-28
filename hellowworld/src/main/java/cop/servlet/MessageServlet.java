@@ -51,9 +51,9 @@ public class MessageServlet extends HttpServlet {
         writer.write("<p>Time Now is <em>" + dateFormat.format(date) + "</em></p>");
         writer.write("<p>NameSpace is <em>" +System.getenv("MY_POD_NAMESPACE") + "</em></p>");
         writer.write("<p>POD NAME IS <em>" + System.getenv("MY_POD") + "</em></p>");
-        Properties pros = System.getProperties();
-        writer.write("<p>NameSpace is <em>" + pros + "</em></p>");
-        writer.write(message);
+        //Properties pros = System.getProperties();
+       // writer.write("<p>NameSpace is <em>" + pros + "</em></p>");
+        //writer.write(message);
         writer.close();
     }
 
