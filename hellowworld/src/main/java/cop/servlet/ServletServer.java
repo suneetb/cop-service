@@ -46,16 +46,17 @@ public class ServletServer {
     public static void main(final String[] args) {
         try {
             Properties pros = System.getProperties();
+            String message = (new StringBuilder()).append("NameSpace is ").append(System.getenv("MY_POD_NAMESPACE")).append("\n").append("POD NAME is ").append(System.getenv("MY_POD")).append("\n").append("APPLICATION NAME IS ").append(("APPLICATION_NAME")).toString();  
             DeploymentInfo servletBuilder = deployment()
                     .setClassLoader(ServletServer.class.getClassLoader())
                     .setContextPath(MYAPP)
                     .setDeploymentName("test.war")
                     .addServlets(
                             servlet("MessageServlet", MessageServlet.class)
-                                    .addInitParam("message", System.getenv("java.home"))
+                                    .addInitParam("message", System.getenv("MY_POD_NAMESPACE"))a
                                     .addMapping("/*"),
                             servlet("MyServlet", MessageServlet.class)
-                                    .addInitParam("message", System.getenv("MY_POD_NAMESPACE"))
+                                    .addInitParam("message", message)
                                     .addMapping("/myservlet"));
 
             DeploymentManager manager = defaultContainer().addDeployment(servletBuilder);
