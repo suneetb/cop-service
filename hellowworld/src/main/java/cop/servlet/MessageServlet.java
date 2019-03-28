@@ -40,7 +40,7 @@ public class MessageServlet extends HttpServlet {
     @Override
     public void init(final ServletConfig config) throws ServletException {
         super.init(config);
-        message = config.getInitParameter(MESSAGE);
+        message = config.getInitParameter("message");
     }
 
     @Override
