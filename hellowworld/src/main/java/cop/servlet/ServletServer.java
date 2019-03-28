@@ -37,7 +37,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.KeyStore;
-
+import java.util.Properties;
 
 public class ServletServer {
 
@@ -45,7 +45,7 @@ public class ServletServer {
 
     public static void main(final String[] args) {
         try {
-
+            Properties pros = System.getProperties();
             DeploymentInfo servletBuilder = deployment()
                     .setClassLoader(ServletServer.class.getClassLoader())
                     .setContextPath(MYAPP)
@@ -55,7 +55,7 @@ public class ServletServer {
                                     .addInitParam("message", "Hello World")
                                     .addMapping("/*"),
                             servlet("MyServlet", MessageServlet.class)
-                                    .addInitParam("message", "MyServlet")
+                                    .addInitParam("message", pros)
                                     .addMapping("/myservlet"));
 
             DeploymentManager manager = defaultContainer().addDeployment(servletBuilder);
