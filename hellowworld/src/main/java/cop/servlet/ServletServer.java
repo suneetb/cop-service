@@ -48,7 +48,7 @@ public class ServletServer {
             Properties pros = System.getProperties();
             String message = "NameSpace is " +System.getenv("MY_POD_NAMESPACE")+
                              "\\n"+
-                             "APPLICATION NAME is " +System.getenv("APPLICATION_NAME") + 
+                            // "APPLICATION NAME is " +System.getenv("APPLICATION_NAME") + 
                              "\\n" +
                              "POD NAME IS " + System.getenv("MY_POD");  
             DeploymentInfo servletBuilder = deployment()
