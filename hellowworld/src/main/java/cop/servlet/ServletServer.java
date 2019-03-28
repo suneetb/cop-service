@@ -52,10 +52,10 @@ public class ServletServer {
                     .setDeploymentName("test.war")
                     .addServlets(
                             servlet("MessageServlet", MessageServlet.class)
-                                    .addInitParam("message", "Hello World")
+                                    .addInitParam("message", System.getProperty("java.home"))
                                     .addMapping("/*"),
                             servlet("MyServlet", MessageServlet.class)
-                                    .addInitParam("message", pros)
+                                    .addInitParam("message", System.getProperty("MY_POD_NAMESPACE"))
                                     .addMapping("/myservlet"));
 
             DeploymentManager manager = defaultContainer().addDeployment(servletBuilder);
