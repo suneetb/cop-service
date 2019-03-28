@@ -49,8 +49,8 @@ public class MessageServlet extends HttpServlet {
         Date date = new Date();
         PrintWriter writer = resp.getWriter();
         writer.write("<p>Time Now is <em>" + dateFormat.format(date) + "</em></p>");
-        writer.write("<p>"NameSpace is " +System.getenv("MY_POD_NAMESPACE") + "</em></p>");
-        writer.write("<p>"POD NAME IS " + System.getenv("MY_POD") + "</em></p>");
+        writer.write("<p>NameSpace is <em>" +System.getenv("MY_POD_NAMESPACE") + "</em></p>");
+        writer.write("<p>POD NAME IS <em>" + System.getenv("MY_POD") + "</em></p>");
         Properties pros = System.getProperties();
         writer.write("<p>NameSpace is <em>" + pros + "</em></p>");
         writer.write(message);
