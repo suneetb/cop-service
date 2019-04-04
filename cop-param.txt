@@ -1,0 +1,4 @@
+APPLICATION_NAME=cop-test
+SOURCE_REPOSITORY_URL=https://github.com/saswatsarangi0914/cop-service.git
+SOURCE_REPOSITORY_REF=master
+CONTEXT_DIR='hellowworld'
