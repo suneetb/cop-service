@@ -6,8 +6,6 @@ pipeline {
         sh '''
           oc new-project clock-service
           '''
-          }
-        }
       }
     }
     stage('S2I Build and Deploy') {
