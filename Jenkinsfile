@@ -5,7 +5,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.create('projects.yml')
+            openshift.create("--filename=projects.yml")
           }
         }
       }
