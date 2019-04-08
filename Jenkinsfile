@@ -12,7 +12,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.process(readFile(file:'openjdk-basic-template.yml'))
+            openshift.create(openshift.process(readFile(file:'openjdk-basic-template.yml')))
           }
         }
       }
