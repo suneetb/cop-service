@@ -3,9 +3,11 @@ pipeline {
   stages {
     stage('Add Project') {
       steps {
-        sh '''
-          oc new-project clock-service
-          '''
+        script {
+          openshift.withCluster() {
+            openshift.create(readfile(file:'projects.yml'))
+          }
+        }
       }
     }
     stage('S2I Build and Deploy') {
