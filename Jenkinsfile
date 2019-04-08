@@ -1,12 +1,21 @@
 pipeline {
-  agent {
-      label 'maven'
-  }
+  agent any
   stages {
-    stage('Build App') {
+    stage('Build') {
+      when {
+        expression {
+          openshift.withCluster() {
+            return !openshift.selector('bc', 'cop-service').exists();
+          }
+        }
+      }
       steps {
-        sh "mvn -B clean install -DskipTests=true -f ./pom.xml"
+        script {
+          openshift.withCluster() {
+            openshift.newApp('redhat-openjdk18-openshift:1.3~https://github.com/sunnyf21/cop-service.git')
+          }
+        }
       }
     }
-  } 
+  }
 }
