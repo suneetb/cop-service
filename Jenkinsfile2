@@ -1,0 +1,12 @@
+pipeline {
+    agent any
+    stages {
+        stage ('build and deploy') {
+            steps {
+                sh '''
+                     oc process -f openjdk-basic-template.yml --param-file cop-param.txt | oc apply -f- 
+                   '''
+            }    
+        }
+    }
+}
