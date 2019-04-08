@@ -1,6 +1,15 @@
 pipeline {
   agent any
   stages {
+    stage(Add Namespace) {
+      steps {
+        script {
+          openshift.withCluster() {
+            openshift.addProject("clock-service","--display-name", "Clock Service")
+          }
+        }
+      }
+    }
     stage('S2I Build and Deploy') {
       when {
         expression {
