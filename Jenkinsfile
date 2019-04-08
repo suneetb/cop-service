@@ -12,7 +12,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.newApp('redhat-openjdk18-openshift:1.3~https://github.com/sunnyf21/cop-service.git')
+            openshift.process(readFile(file:'openjdk-basic-template.yml'), "-p", "PARAM-FILE=cop-param.txt")
           }
         }
       }
