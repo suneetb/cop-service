@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('S2I Build and Deploy') {
       when {
         expression {
           openshift.withCluster() {
