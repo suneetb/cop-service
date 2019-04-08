@@ -4,9 +4,9 @@ Image : redhat-openjdk18-openshift:1.3
 
 Template: oc new-app --template=openjdk18-web-basic-s2i
 
-Case 1:
-
 oc export template openjdk18-web-basic-s2i -n openshift > openjdk-basic-template.yml
+
+Case 1: Template + manually passing parameters
 
 oc process -f openjdk-basic-template.yml -p APPLICATION_NAME=cop-clock -p SOURCE_REPOSITORY_URL=https://github.com/sunnyf21/cop-service.git | oc apply -f-
 
