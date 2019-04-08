@@ -5,7 +5,9 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
+            openshift.withProject('clock_service') {
             return !openshift.selector('bc', 'cop-service').exists();
+            }
           }
         }
       }
