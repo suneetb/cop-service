@@ -1,15 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Add Project') {
-      steps {
-        script {
-          openshift.withCluster() {
-            openshift.create("--filename=projects.yml")
-          }
-        }
-      }
-    }
     stage('S2I Build and Deploy') {
       when {
         expression {
