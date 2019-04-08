@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage(Add Namespace) {
+    stage('Add Project') {
       steps {
         script {
           openshift.withCluster() {
