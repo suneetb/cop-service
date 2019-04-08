@@ -5,7 +5,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.newProject("clock-service")
+            openshift.newProject('clock-service')
           }
         }
       }
