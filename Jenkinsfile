@@ -12,7 +12,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.process(readFile(file:'openjdk-basic-template.yml'), "-p", "PARAM-FILE=cop-param.txt")
+            openshift.process(readFile(file:'openjdk-basic-template.yml'), "-p", readfile(file:'cop-param.txt'))
           }
         }
       }
