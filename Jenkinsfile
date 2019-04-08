@@ -3,9 +3,9 @@ pipeline {
   stages {
     stage('Add Project') {
       steps {
-        script {
-          openshift.withCluster() {
-            openshift.newProject('clock-service')
+        sh '''
+          oc new-project clock-service
+          '''
           }
         }
       }
