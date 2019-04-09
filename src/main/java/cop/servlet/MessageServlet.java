@@ -53,7 +53,9 @@ public class MessageServlet extends HttpServlet {
         propertiesConfig.put("TimeStamp",dateFormat.format(date));
         propertiesConfig.put("Namespace",System.getenv("MY_POD_NAMESPACE"));
         propertiesConfig.put("Pod",System.getenv("MY_POD"));
-        propertiesConfig.put("configmap",System.getenv("CONFIG_PROPERTIES"));
+        propertiesConfig.put("DatabaseName",System.getenv("databasename"));
+        propertiesConfig.put("DatabaseHost",System.getenv("databasehost"));
+        propertiesConfig.put("DatabasePwd",System.getenv("dbpassword"));
 
 //        writer.write("<p>Time Now is <em>" + dateFormat.format(date) + "</em></p>");
   //      writer.write("<p>NameSpace is <em>" +System.getenv("MY_POD_NAMESPACE") + "</em></p>");
