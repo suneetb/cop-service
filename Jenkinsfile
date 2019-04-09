@@ -6,7 +6,7 @@ pipeline {
         script {
           openshift.withCluster() {
             openshift.withProject('clock-service') {
-              openshift.create('configmap', 'cmp-cop-service'. "--from-file=/confg/")
+              openshift.create('configmap', 'cmp-cop-service'. "--from-file=confg/config.properties")
           }
         }
        }
