@@ -30,6 +30,7 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
+import org.json.simple.JSONObject;
 
 public class MessageServlet extends HttpServlet {
 
@@ -48,13 +49,24 @@ public class MessageServlet extends HttpServlet {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         PrintWriter writer = resp.getWriter();
-        writer.write("<p>Time Now is <em>" + dateFormat.format(date) + "</em></p>");
-        writer.write("<p>NameSpace is <em>" +System.getenv("MY_POD_NAMESPACE") + "</em></p>");
-        writer.write("<p>POD NAME IS <em>" + System.getenv("MY_POD") + "</em></p>");
+        JSONObject propertiesConfig = new JSONObject();
+        propertiesConfig.put("TimeStamp",dateFormat.format(date));
+        propertiesConfig.put("Namespace",System.getenv("MY_POD_NAMESPACE"));
+        propertiesConfig.put("Pod",System.getenv("MY_POD"));
+        propertiesConfig.put("configmap",System.getenv("CONFIG_PROPERTIES"));
+
+//        writer.write("<p>Time Now is <em>" + dateFormat.format(date) + "</em></p>");
+  //      writer.write("<p>NameSpace is <em>" +System.getenv("MY_POD_NAMESPACE") + "</em></p>");
+    //    writer.write("<p>POD NAME IS <em>" + System.getenv("MY_POD") + "</em></p>");
+      //  writer.write("<p>config properties are <em>" + System.getenv("CONFIG_PROPERTIES") + "</em></p>");
+
+          writer.write("<p>" +  propertiesConfig.toJSONString() + "</p>");
+
         //Properties pros = System.getProperties();
        // writer.write("<p>NameSpace is <em>" + pros + "</em></p>");
         //writer.write(message);
         writer.close();
+
     }
 
     @Override

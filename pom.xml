@@ -56,6 +56,12 @@
             <artifactId>jboss-logmanager</artifactId>
             <version>${version.jboss.logmanager}</version>
         </dependency>
+      
+       <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
 
     </dependencies>
 
