@@ -4,6 +4,7 @@ pipeline {
         stage ('Create Namespace') {
             steps {
                 sh '''
+                     oc login -u suneet.bhatnagar -p Newuser@123
                      oc new-project cop-service2 
                    '''
             }    
