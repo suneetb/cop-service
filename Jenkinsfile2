@@ -4,7 +4,7 @@ pipeline {
         stage ('Create Namespace') {
             steps {
                 sh '''
-                     oc login https://dev-openshift.copaccenture.com:8443 -u suneet.bhatnagar -p Newuser@123
+                     oc login https://dev-openshift.copaccenture.com:8443 -u suneet.bhatnagar -p Newuser@123 --insecure-skip-tls-verify
                      oc new-project cop-service2 
                    '''
             }    
