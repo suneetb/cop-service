@@ -109,6 +109,11 @@ objects:
       spec:
         containers:
         - env: []
+          - name: CONFIG_PROPERTIES
+              valueFrom:
+                configMapKeyRef:
+                  key: config.properties
+                  name: helloworld-config
           image: ${APPLICATION_NAME}
           imagePullPolicy: Always
           name: ${APPLICATION_NAME}
