@@ -1,6 +1,13 @@
 pipeline {
     agent any
     stages {
+        stage ('Create Namespace') {
+            steps {
+                sh '''
+                     oc new-project cop-service2 
+                   '''
+            }    
+        }
         stage ('Create Configmap') {
             steps {
                 sh '''
