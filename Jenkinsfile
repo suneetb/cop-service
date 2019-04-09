@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage {
+    stage('Create Configmap') {
       script {
         openshift.withCluster() {
           openshift.withProject('clock-service') {
