@@ -108,20 +108,30 @@ objects:
         name: ${APPLICATION_NAME}
       spec:
         containers:
-        - env: []
-          image: ${APPLICATION_NAME}
-          imagePullPolicy: Always
-          name: ${APPLICATION_NAME}
-          ports:
-          - containerPort: 8778
-            name: jolokia
-            protocol: TCP
-          - containerPort: 8080
-            name: http
-            protocol: TCP
-          - containerPort: 8443
-            name: https
-            protocol: TCP
+          - env:
+              - name: CONFIG_PROPERTIES
+                valueFrom:
+                  configMapKeyRef:
+                    key: config.properties
+                    name: helloworld-config
+              - name: DB_PASSWORD
+                valueFrom:
+                  configMapKeyRef:
+                    key: db.password
+                    name: db
+            image: ${APPLICATION_NAME}
+            imagePullPolicy: Always
+            name: ${APPLICATION_NAME}
+            ports:
+            - containerPort: 8778
+              name: jolokia
+              protocol: TCP
+            - containerPort: 8080
+              name: http
+              protocol: TCP
+            - containerPort: 8443
+              name: https
+              protocol: TCP
         terminationGracePeriodSeconds: 75
     triggers:
     - imageChangeParams:
