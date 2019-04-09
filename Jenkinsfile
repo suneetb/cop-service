@@ -2,14 +2,16 @@ pipeline {
   agent any
   stages {
     stage('Create Configmap') {
-      script {
-        openshift.withCluster() {
-          openshift.withProject('clock-service') {
-            openshift.create('configmap', 'cmp-cop-service'. "--from-file=/confg/")
+      steps{
+        script {
+          openshift.withCluster() {
+            openshift.withProject('clock-service') {
+              openshift.create('configmap', 'cmp-cop-service'. "--from-file=/confg/")
           }
         }
+       }
       }
-    }
+     }
     stage('S2I Build and Deploy') {
       when {
         expression {
