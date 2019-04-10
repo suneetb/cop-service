@@ -2,10 +2,15 @@ pipeline {
     agent any
     stages {
         stage ('Create Namespace') {
-            steps {
-                sh '''
-                     oc new-project $msname
-                   '''
+            steps{
+              script {
+                openshift.withCluster() {
+                  openshift.newProject('demo')
+          }
+       }
+               // sh '''
+                 //    oc new-project $msname
+                 //  '''
             }    
         }
         stage ('Create Configmap') {
