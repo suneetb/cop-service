@@ -25,7 +25,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.withProject('clock-service') {
+            openshift.withProject() {
               openshift.create(openshift.process(readFile(file:'openjdk-basic-template.yml'), "--param-file=cop-param.txt"))
             }  
           }
