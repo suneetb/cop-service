@@ -1,21 +1,6 @@
 pipeline {
   agent any
   stages {
-    /*stage('Create Namespace') {
-      steps{
-        sh '''
-             oc new-project cop-service3
-          '''
-      }
-             
-      /*steps{
-          script {
-            openshift.withCluster() {
-              openshift.newProject('cop-service')
-          }
-         }
-        } */
-      }*/
     stage('Create Configmap') {
       steps{
         script {
