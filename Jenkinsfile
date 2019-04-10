@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Create Namespace') {
+    /*stage('Create Namespace') {
       steps{
         sh '''
              oc new-project cop-service3
@@ -15,7 +15,7 @@ pipeline {
           }
          }
         } */
-      }
+      }*/
     stage('Create Configmap') {
       steps{
         script {
