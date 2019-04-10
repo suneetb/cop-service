@@ -5,7 +5,9 @@ pipeline {
       steps{
         script {
           openshift.withCluster() {
-            openshift.create('namespace', 'cop-service3') 
+            openshift.withProject() {
+              openshift.create('namespace', 'cop-service3') 
+           }  
          }
         }
        }
