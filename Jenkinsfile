@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
     stage('Project') {
-      step {
+      steps {
         sh '''
           oc new-project test3
           '''
