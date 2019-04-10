@@ -3,14 +3,9 @@ pipeline {
     stages {
         stage ('Create Namespace') {
             steps{
-              script {
-                openshift.withCluster() {
-                  openshift.newProject('demo')
-          }
-       }
-               // sh '''
-                 //    oc new-project $msname
-                 //  '''
+              sh '''
+                 oc new-project $msname
+                 '''
             }    
         }
         stage ('Create Configmap') {
