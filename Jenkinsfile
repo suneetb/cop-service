@@ -2,6 +2,15 @@ pipeline {
   agent any
   stages {
     stage('Create Configmap') {
+      when {
+        expression {
+          openshift.withCluster() {
+            openshift.withProject() {
+            return !openshift.selector('configmap', 'cmp-cop-service').exists();
+            }
+          }
+        }
+      }
       steps{
         script {
           openshift.withCluster() {
