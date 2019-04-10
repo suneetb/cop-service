@@ -5,7 +5,8 @@ pipeline {
       steps {
         sh '''
           oc new-project test2
-      }   '''
+           '''
+      }
     }
     stage('Create Configmap') {
       when {
@@ -17,7 +18,7 @@ pipeline {
           }
         }
       }
-      steps{
+      steps {
         script {
           openshift.withCluster() {
             openshift.withProject() {
