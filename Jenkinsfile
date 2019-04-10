@@ -1,11 +1,20 @@
 pipeline {
   agent any
   stages {
+    stage('Create Namespace') {
+      steps{
+        script {
+          openshift.withCluster() {
+            openshift.newProject("cop-service3","--display-name", "COP Service") 
+         }
+        }
+       }
+      }
     stage('Create Configmap') {
       steps{
         script {
           openshift.withCluster() {
-            openshift.withProject('clock-service') {
+            openshift.withProject() {
               openshift.create('configmap', 'cmp-cop-service', "--from-file=confg/config.properties")
           }
         }
@@ -16,8 +25,8 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            openshift.withProject('clock-service') {
-            return !openshift.selector('bc', 'cop-service').exists();
+            openshift.withProject() {
+            return !openshift.selector('bc', 'cop-service3').exists();
             }
           }
         }
