@@ -11,11 +11,11 @@ pipeline {
         stage ('Create Configmap') {
             steps {
                 sh '''
-                     oc create configmap cmp-cop-service --from-file=confg/config.properties 
+                     oc create configmap "'cmp-'+$msname" --from-file=confg/config.properties 
                    '''
             }    
         }
-        stage ('build and deploy') {
+        stage ('S2I build and deploy') {
             steps {
                 sh '''
                      oc process -f openjdk-basic-template.yml --param-file cop-param.txt | oc apply -f- 
