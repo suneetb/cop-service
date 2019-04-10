@@ -5,7 +5,7 @@ pipeline {
       steps{
         script {
           openshift.withCluster() {
-              openshift.create('namespace', 'cop-service3', 'insecure-skip-tls-verify: true')
+              openshift.addProject('cop-service')
          }
         }
        }
