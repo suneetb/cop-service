@@ -11,7 +11,7 @@ pipeline {
         stage ('Create Configmap') {
             steps {
                 sh '''
-                     oc create configmap 'cmp-'+$msname --from-file=confg/config.properties 
+                     oc create configmap 'cmp-'$msname --from-file=confg/config.properties 
                    '''
             }    
         }
