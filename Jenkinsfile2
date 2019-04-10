@@ -4,7 +4,7 @@ pipeline {
         stage ('Create Namespace') {
             steps {
                 sh '''
-                     oc new-project cop-service3 
+                     oc new-project $msname
                    '''
             }    
         }
