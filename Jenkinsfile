@@ -1,6 +1,12 @@
 pipeline {
   agent any
   stages {
+    stage('Create Namespace') {
+      steps {
+        sh '''
+          oc new-project test2
+      }   '''
+    }
     stage('Create Configmap') {
       when {
         expression {
