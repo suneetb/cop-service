@@ -4,6 +4,7 @@ pipeline {
     stage('Project') {
       steps {
         sh '''
+          oc login https://dev-openshift.copaccenture.com:8443 --token=$token 
           oc new-project test3
           '''
       }
