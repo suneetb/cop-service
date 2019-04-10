@@ -1,14 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Project') {
-      steps {
-        sh '''
-          oc login https://dev-openshift.copaccenture.com:8443 --token=$token --insecure-skip-tls-verify
-          oc new-project test3
-          '''
-      }
-    }
     stage('Create Configmap') {
       when {
         expression {
