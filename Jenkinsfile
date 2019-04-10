@@ -12,7 +12,7 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            openshift.withProject('test3') {
+            openshift.withProject('cop-service') {
             return !openshift.selector('configmap', 'cmp-cop-service').exists();
             }
           }
@@ -21,7 +21,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.withProject('test3') {
+            openshift.withProject('cop-service') {
               openshift.create('configmap', 'cmp-cop-service', "--from-file=confg/config.properties")
           }
         }
@@ -32,7 +32,7 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            openshift.withProject('test3') {
+            openshift.withProject('cop-service') {
             return !openshift.selector('bc', 'cop-service3').exists();
             }
           }
@@ -41,7 +41,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.withProject('test3') {
+            openshift.withProject('cop-service') {
               openshift.create(openshift.process(readFile(file:'openjdk-basic-template.yml'), "--param-file=cop-param.txt"))
             }  
           }
