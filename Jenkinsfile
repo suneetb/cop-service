@@ -26,7 +26,7 @@ pipeline {
         expression {
           openshift.withCluster() {
             openshift.withProject('test3') {
-            return !openshift.selector('bc', 'cop-service3').exists();
+            return !openshift.selector('bc', 'cop-service').exists();
             }
           }
         }
