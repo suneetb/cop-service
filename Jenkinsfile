@@ -42,15 +42,6 @@ pipeline {
       }
      }
     stage('S2I Build and Deploy') {
-      when {
-        expression {
-          openshift.withCluster() {
-            openshift.withProject(env.namespace) {
-            return !openshift.selector('bc', env.namespace).exists();
-            }
-          }
-        }
-      }
       steps {
         script {
           openshift.withCluster() {
