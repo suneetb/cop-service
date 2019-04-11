@@ -1,5 +1,5 @@
 openshift.withCluster() {
-  env.NAMESPACE= $msname
+  env.NAMESPACE= "${env.msname}"
 }
 
 pipeline {
