@@ -42,20 +42,11 @@ pipeline {
       }
      }
     stage('S2I Build and Deploy') {
-      when {
-        expression {
-          openshift.withCluster() {
-            openshift.withProject(env.NAMESPACE) {
-            return !openshift.selector('bc', env.NAMESPACE).exists();
-            }
-          }
-        }
-      }
       steps {
         script {
           openshift.withCluster() {
             openshift.withProject(env.NAMESPACE) {
-              openshift.create(openshift.process(readFile(file:'openjdk-basic-template.yml'), "--param-file=cop-param.txt"))
+              openshift.apply(openshift.process(readFile(file:'openjdk-basic-template.yml'), "--param-file=cop-param.txt"))
             }  
           }
         }
