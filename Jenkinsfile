@@ -26,7 +26,7 @@ pipeline {
         expression {
           openshift.withCluster() {
             openshift.withProject(env.NAMESPACE) {
-            return !openshift.selector('configmap', 'cop-service').exists();
+            return !openshift.selector('configmap', 'cmp-cop-service').exists();
             }
           }
         }
@@ -35,7 +35,7 @@ pipeline {
         script {
           openshift.withCluster() {
             openshift.withProject(env.NAMESPACE) {
-              openshift.create('configmap', 'cop-service' , "--from-file=confg/config.properties")
+              openshift.create('configmap', 'cmp-cop-service' , "--from-file=confg/config.properties")
           }
         }
        }
