@@ -2,6 +2,13 @@ pipeline {
   agent any
   stages {
     stage('Project') {
+      when {
+        expression {
+          openshift.withCluster() {
+            return !openshift.selector('namespace', 'cop-service').exists();
+          }
+        }
+      }
       steps {
         script {
           openshift.withCluster() {
