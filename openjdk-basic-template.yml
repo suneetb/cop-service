@@ -113,7 +113,7 @@ objects:
                 valueFrom:
                   configMapKeyRef:
                     key: config.properties
-                    name: cmp-cop-service
+                    name: cop-service
             image: ${APPLICATION_NAME}
             imagePullPolicy: Always
             name: ${APPLICATION_NAME}
