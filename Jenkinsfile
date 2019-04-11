@@ -9,14 +9,14 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            return !openshift.selector('namespace', $msname).exists();
+            return !openshift.selector('namespace', env.NAMESPACE).exists();
           }
         }
       }
       steps {
         script {
           openshift.withCluster() {
-            openshift.create('namespace', $msname)
+            openshift.create('namespace', env.NAMESPACE)
           }
         }  
       }
@@ -25,8 +25,8 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            openshift.withProject($msname) {
-            return !openshift.selector('configmap', $msname).exists();
+            openshift.withProject(env.NAMESPACE) {
+            return !openshift.selector('configmap', env.NAMESPACE).exists();
             }
           }
         }
@@ -34,8 +34,8 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.withProject($msname) {
-              openshift.create('configmap', $msname , "--from-file=confg/config.properties")
+            openshift.withProject(env.NAMESPACE) {
+              openshift.create('configmap', env.NAMESPACEe , "--from-file=confg/config.properties")
           }
         }
        }
@@ -45,8 +45,8 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            openshift.withProject($msname) {
-            return !openshift.selector('bc', $msname).exists();
+            openshift.withProject(env.NAMESPACE) {
+            return !openshift.selector('bc', env.NAMESPACE).exists();
             }
           }
         }
