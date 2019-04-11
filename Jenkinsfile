@@ -1,18 +1,18 @@
 pipeline {
   agent any
   stages {
-    stage('Project') {
+    stage('Create Namespace') {
       when {
         expression {
           openshift.withCluster() {
-            return !openshift.selector('namespace', 'cop-service').exists();
+            return !openshift.selector('namespace', $msname).exists();
           }
         }
       }
       steps {
         script {
           openshift.withCluster() {
-            openshift.create('namespace', 'cop-service')
+            openshift.create('namespace', $msname)
           }
         }  
       }
@@ -21,7 +21,7 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            openshift.withProject('cop-service') {
+            openshift.withProject($msname) {
             return !openshift.selector('configmap', 'cmp-cop-service').exists();
             }
           }
@@ -30,8 +30,8 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.withProject('cop-service') {
-              openshift.create('configmap', 'cmp-cop-service', "--from-file=confg/config.properties")
+            openshift.withProject($msname) {
+              openshift.create('configmap', $msname , "--from-file=confg/config.properties")
           }
         }
        }
@@ -41,8 +41,8 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            openshift.withProject('cop-service') {
-            return !openshift.selector('bc', 'cop-service').exists();
+            openshift.withProject($msname) {
+            return !openshift.selector('bc', $msname).exists();
             }
           }
         }
