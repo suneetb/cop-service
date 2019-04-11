@@ -3,9 +3,11 @@ pipeline {
   stages {
     stage('Project') {
       steps {
-        sh '''
-           oc new-project cop-service
-           '''
+        script {
+          openshift.withCluster() {
+            openshift.create('namespace', 'cop-service')
+          }
+        }  
       }
     }
     stage('Create Configmap') {
