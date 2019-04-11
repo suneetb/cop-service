@@ -2,7 +2,7 @@ pipeline {
   agent any
   stages {
     stage {
-      steps {
+      steps('deploy') {
         script {
           openshift.withCluster() {
             openshift.withProject('cop-service') {
