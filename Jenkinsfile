@@ -1,3 +1,7 @@
+openshift.withCluster() {
+  env.namespace= "${env.msname}"
+}
+
 pipeline {
   agent any
   stages {
@@ -5,14 +9,14 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            return !openshift.selector('namespace', $env.msname).exists();
+            return !openshift.selector('namespace', env.namespace).exists();
           }
         }
       }
       steps {
         script {
           openshift.withCluster() {
-            openshift.create('namespace', $env.msname)
+            openshift.create('namespace', env.namespace)
           }
         }  
       }
@@ -21,7 +25,7 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            openshift.withProject($env.msname) {
+            openshift.withProject(env.namespace) {
             return !openshift.selector('configmap', 'cmp-cop-service').exists();
             }
           }
@@ -30,7 +34,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.withProject($env.msname) {
+            openshift.withProject(env.namespace) {
               openshift.create('configmap', 'cmp-cop-service' , "--from-file=confg/config.properties")
           }
         }
@@ -41,7 +45,7 @@ pipeline {
       when {
         expression {
           openshift.withCluster() {
-            openshift.withProject($env.msname) {
+            openshift.withProject(env.namespace) {
             return !openshift.selector('bc', 'cop-service').exists();
             }
           }
@@ -50,7 +54,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.withProject($env.msname) {
+            openshift.withProject(env.namespace) {
               openshift.apply(openshift.process(readFile(file:'openjdk-basic-template.yml'), "--param-file=cop-param.txt"))
             }  
           }
