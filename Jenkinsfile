@@ -1,7 +1,3 @@
-openshift.withCluster() {
-  env.NAMESPACE= "${env.msname}"
-}
-
 pipeline {
   agent any
   stages {
@@ -42,6 +38,15 @@ pipeline {
       }
      }
     stage('S2I Build and Deploy') {
+      when {
+        expression {
+          openshift.withCluster() {
+            openshift.withProject('cop-service') {
+            return !openshift.selector('bc', 'cop-service').exists();
+            }
+          }
+        }
+      }
       steps {
         script {
           openshift.withCluster() {
