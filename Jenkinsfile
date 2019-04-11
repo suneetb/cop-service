@@ -1,3 +1,7 @@
+openshift.withCluster() {
+  env.NAMESPACE= $msname
+}
+
 pipeline {
   agent any
   stages {
@@ -22,7 +26,7 @@ pipeline {
         expression {
           openshift.withCluster() {
             openshift.withProject($msname) {
-            return !openshift.selector('configmap', 'cmp-cop-service').exists();
+            return !openshift.selector('configmap', $msname).exists();
             }
           }
         }
