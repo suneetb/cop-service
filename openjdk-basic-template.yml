@@ -108,12 +108,7 @@ objects:
         name: ${APPLICATION_NAME}
       spec:
         containers:
-          - env:
-              - name: CONFIG_PROPERTIES
-                valueFrom:
-                  configMapKeyRef:
-                    key: config.properties
-                    name: cmp-cop-service
+          - env: []
             image: ${APPLICATION_NAME}
             imagePullPolicy: Always
             name: ${APPLICATION_NAME}
