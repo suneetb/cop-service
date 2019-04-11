@@ -35,7 +35,7 @@ pipeline {
         script {
           openshift.withCluster() {
             openshift.withProject(env.NAMESPACE) {
-              openshift.create('configmap', env.NAMESPACEe , "--from-file=confg/config.properties")
+              openshift.create('configmap', env.NAMESPACE , "--from-file=confg/config.properties")
           }
         }
        }
