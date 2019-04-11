@@ -1,6 +1,22 @@
 pipeline {
   agent any
   stages {
+    stage('Create Namespace') {
+      when {
+        expression {
+          openshift.withCluster() {
+            return !openshift.selector('namespace', 'cop-service').exists();
+          }
+        }
+      }
+      steps {
+        script {
+          openshift.withCluster() {
+            openshift.create('namespace', 'cop-service')
+          }
+        }  
+      }
+    }
     stage('Create Configmap') {
       when {
         expression {
@@ -21,7 +37,16 @@ pipeline {
        }
       }
      }
-    stage('deploy') {
+    stage('S2I Build and Deploy') {
+      when {
+        expression {
+          openshift.withCluster() {
+            openshift.withProject('cop-service') {
+            return !openshift.selector('bc', 'cop-service').exists();
+            }
+          }
+        }
+      }
       steps {
         script {
           openshift.withCluster() {
