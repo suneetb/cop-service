@@ -46,7 +46,7 @@ pipeline {
         expression {
           openshift.withCluster() {
             openshift.withProject(env.namespace) {
-            return !openshift.selector('bc', 'cop-service').exists();
+            return !openshift.selector('bc', env.namespace).exists();
             }
           }
         }
