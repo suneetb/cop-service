@@ -1,6 +1,7 @@
 pipeline {
   agent any
   stages {
+    stage {
       steps {
         script {
           openshift.withCluster() {
@@ -12,4 +13,4 @@ pipeline {
       }
     }
   }
-
+}
