@@ -5,6 +5,26 @@ openshift.withCluster() {
 pipeline {
   agent any
   stages {
+    stage('Create Configmap') {
+      when {
+        expression {
+          openshift.withCluster() {
+            openshift.withProject(env.namespace) {
+            return !openshift.selector('configmap', 'cmp-cop-service').exists();
+            }
+          }
+        }
+      }
+      steps {
+        script {
+          openshift.withCluster() {
+            openshift.withProject(env.namespace) {
+              openshift.create('configmap', 'cmp-cop-service' , "--from-file=confg/config.properties")
+          }
+        }
+       }
+      }
+     }
     stage('S2I Build and Deploy') {
       steps {
         script {
