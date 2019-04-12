@@ -5,7 +5,6 @@ openshift.withCluster() {
 pipeline {
   agent any
   stages {
-    stages {
     stage('Create Namespace') {
       when {
         expression {
