@@ -4,7 +4,22 @@ openshift.withCluster() {
 
 pipeline {
   agent any
-  stages {
+    stage('Create Namespace') {
+      when {
+        expression {
+          openshift.withCluster() {
+            return !openshift.selector('namespace', env.namespace).exists();
+          }
+        }
+      }
+      steps {
+        script {
+          openshift.withCluster() {
+            openshift.create('namespace', env.namespace)
+          }
+        }  
+      }
+    }
     stage('Create Configmap') {
       when {
         expression {
