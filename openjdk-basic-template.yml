@@ -108,17 +108,12 @@ objects:
         name: ${APPLICATION_NAME}
       spec:
         containers:
-          - env:
+          - env: 
               - name: CONFIG_PROPERTIES
                 valueFrom:
                   configMapKeyRef:
                     key: config.properties
-                    name: helloworld-config
-              - name: DB_PASSWORD
-                valueFrom:
-                  configMapKeyRef:
-                    key: db.password
-                    name: db
+                    name: cmp-cop-service
             image: ${APPLICATION_NAME}
             imagePullPolicy: Always
             name: ${APPLICATION_NAME}
