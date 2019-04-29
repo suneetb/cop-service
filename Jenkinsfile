@@ -55,7 +55,7 @@ pipeline {
         script {
           openshift.withCluster() {
             openshift.withProject(env.namespace) {
-              openshift.apply(openshift.process(readFile(file:'openjdk-basic-template.yml'), "--param-file=cop-param.txt"))
+              openshift.apply(openshift.process(readFile(file:'openjdk-basic-template.yml'), "--param-file=param.properties"))
             }  
           }
         }
