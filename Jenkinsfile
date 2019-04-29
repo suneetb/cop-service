@@ -16,7 +16,7 @@ pipeline {
       steps {
         script {
           openshift.withCluster() {
-            openshift.newProject (env.namespace)
+            openshift.create ('namespace', env.namespace)
           }
         }  
       }
